@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="login_style.css">
+</head>
+<ul>
+  <li><a href="{% url 'index' %}">Home</a></li>
+  <li><a href="{% url 'contact' %}">Contact Us</a></li>
+  <li><a href="{% url 'user_login' %}">Login</a></li>
+</ul>
+
+<h1> Login as User</h1>
+
+<form action="{% url 'authenticate_user' %}" method="post">
+    {% csrf_token %}
+    <label>Username</label>
+    <input type="text" name="username" placeholder="User" required>
+    <br/><br/>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <br/><br/>
+
+    <input type="submit" value="Login">
+</form>

@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+{%  block content %}
+    <ul>
+  <li><a href="{% url 'index' %}">Home</a></li>
+  <li><a href="{% url 'contact' %}">Contact Us</a></li>
+  <li><a href="{% url 'user_login' %}">Login</a></li>
+</ul>
+    <h1>Learn more about our car specials</h1>
+
+    <h3>Enquire today!!!</h3>
+
+    {% if error_message %}
+        <p><string>{{ error_message }}</string></p>
+    {%  endif %}
+
+    <form action="{% url 'webapp:enquire' question.id %}" method="post">
+        {% csrf_token %}
+        {{ enquiry }}
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="subject" required>
+        <br/><br/>
+
+        <label>Message</label>
+        <input type="text" name="subject" placeholder="Which car are you interested in?" required>
+        <br/><br/>
+
+         <label>Email Address</label>
+        <input type="text" name="email" placeholder="user@exampe.com" required>
+        <br/><br/>
+
+         <label>Contact number</label>
+        <input type="number" name="contact" placeholder="0123456789" required>
+        <br/><br/>
+
+        <input type="submit" value="Enquire">
+    </form>
+
+{% endblock %}
